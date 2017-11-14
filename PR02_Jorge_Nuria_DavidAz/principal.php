@@ -53,13 +53,54 @@
 				<div class="panel panel-primary">
 					<div class="panel panel-heading">INCIDENCIA</div>
 						<div class="panel-body">
-							<form>
-								<label>Nom Article</label>
-								<input type="text" name="nom">
+							<?php
+								include('incidencias.proc.php');
+								echo "<form name='formulario' method='POST' action='incidencias.proc.php' accept-charset='UTF-8'>";
+			
+								//DATALIST NOMBRE RECURSO
+								// $qn="SELECT DISTINCT nombreRecursos FROM tbl_recurso";
+								// $querymuestran=mysqli_query($conexion,$qn);
+								echo "Nombre recurso<br>";
+								echo "<select class='form-control' id='nombreRecursos' name='nombreRecursos'>";
+								// echo "<select id='nombreRecursos' name='nombreRecursos'>";
+										echo "<option></option>";
+										while ($row=mysqli_fetch_array($querymuestran)) {
+											echo '<option value="'.utf8_encode($row['nombreRecursos']).'">'.utf8_encode($row['nombreRecursos']).'</option>';
+										}
+								echo "</select><br>";
 
-								<label>Tipus articcle</label>
-								<input type="text" name="tipus">
-							</form>
+								//SELECT TIPO RECURSO
+								echo "Tipo recurso:<br>";
+									// $sql1="SELECT DISTINCT tipoRecursos FROM tbl_recurso";
+									// $qrecu= mysqli_query($conexion, $sql1);
+									echo "<select name='tipoRecursos' class='form-control' id='textbox' required />";
+									// echo "<select name='tipoRecursos' required id='textbox'><br>";
+										while ($row=mysqli_fetch_array($qrecu)) {
+											echo '<option value="'.$row['tipoRecursos'].'">'.$row['tipoRecursos'].'</option>';
+										}
+									echo "</select><br>";
+
+								//INPUT DESCRIPCIÓN
+								echo "Descripcion:<br>";
+								echo "<textarea name='desc' class='form-control' rows='5' id='comment' required /></textarea>";
+
+								//INPUT INCIDENCIA
+								echo "Fecha incidencia:<br>";
+								echo "<input class='form-control' type='datetime-local' name='fechaIncidencia' size='20' id='textbox' required /><br>";
+
+								//SUBMIT
+								echo "<input type='submit' value='Submit' id='btnsubmit' onclick='submitForm();'><br>";
+								
+								// if(isset($_POST['nombreRecursos'])) {
+								// 	$descripcionIncidencia=mysqli_real_escape_string($conexion, utf8_decode($_POST['descripcionIncidencia']));
+								// 	$fechaIncidencia=mysqli_real_escape_string($conexion, $_POST['fechaIncidencia']);
+
+								// 	$queryanunci="INSERT INTO tbl_incidencia(descripcionIncidencia, fechaIncidencia) VALUES ('$descripcionIncidencia', '$fechaIncidencia')";
+
+								// 	$resul1=mysqli_query($conexion, $queryanunci);
+								// 	$resul2=mysqli_query($conexion, $query);
+								// }
+							?>	
 						</div>
 				</div>
 			</div>
@@ -121,3 +162,23 @@
 
 </body>
 </html>
+
+<!-- <script type="text/javascript">
+	
+	$qn="SELECT DISTINCT nombreRecursos FROM tbl_recurso";
+	$querymuestran=mysqli_query($conexion,$qn);
+	$sql1="SELECT DISTINCT tipoRecursos FROM tbl_recurso";
+	$qrecu= mysqli_query($conexion, $sql1);
+
+	if(isset($_POST['nombreRecursos'])) {
+		$descripcionIncidencia=mysqli_real_escape_string($conexion, utf8_decode($_POST['descripcionIncidencia']));
+		$fechaIncidencia=mysqli_real_escape_string($conexion, $_POST['fechaIncidencia']);
+
+		$queryanunci="INSERT INTO tbl_incidencia(descripcionIncidencia, fechaIncidencia) VALUES ('$descripcionIncidencia', '$fechaIncidencia')";
+
+		$resul1=mysqli_query($conexion, $queryanunci);
+		$resul2=mysqli_query($conexion, $query);
+	}
+
+
+</script> -->

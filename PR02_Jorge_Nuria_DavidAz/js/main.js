@@ -1,4 +1,5 @@
 
-document.getElementById("#cerrar_sesion").click(){
-	window.location.href = "index.html";
+function loading(){
+	imagen = '<img src="/img/loading.gif" alt="Cargando..." />'
+	document.getElementById('imagencargando').innerHTML = imagen;
 }

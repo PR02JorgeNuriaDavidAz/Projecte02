@@ -5,7 +5,7 @@
 	
 	//miramos si la conexión se ha realizado correctamente
 	//si no es correcta, mostrar error
-	if(!$conexio){
+	if(!$conexion){
 	    echo "Error: No se pudo conectar a MySQL." . PHP_EOL;
 	    echo "errno de depuración: " . mysqli_connect_errno() . PHP_EOL;
 	    echo "error de depuración: " . mysqli_connect_error() . PHP_EOL;
@@ -15,8 +15,9 @@
 		$usuario=$_REQUEST['usuario'];
 		$password=$_REQUEST['password'];
 
-		$q = "SELECT * FROM tbl_usuario WHERE nombreUsuario='$usuario' AND password='$password'";
-		$dadesUsuaris = mysqli_query($conexio, $q);
+		$q = "SELECT * FROM tbl_usuario WHERE nombreUsuario='$usuario' AND passwordUsuario='$password'";
+		$dadesUsuaris = mysqli_query($conexion, $q);
+		echo $q;
 		// echo "$q";
 		
 		if(mysqli_num_rows($dadesUsuaris)>0){
