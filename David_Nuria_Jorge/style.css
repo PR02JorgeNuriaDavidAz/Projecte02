@@ -1,0 +1,27 @@
+#contenedor_izq{
+	right: 0;
+	width: 20%;
+	height: all;
+	background-color: green;
+	border: 1px solid black;
+}
+
+#contenedor_derch{
+	right: 0;
+	width: 20%;
+	height: all;
+	background-color: blue;
+	border: 1px solid black;
+}
+
+#contenedor_central{
+	left: 0;
+	width: 60%;
+	height: all;
+	background-color: orange;
+	border: 1px solid black;
+}
+
+body{
+	background-color: red;
+}

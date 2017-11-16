@@ -1,0 +1,46 @@
+
+
+.div2{
+	background-color: blue;
+	float:right;
+	font-size: 20px;
+	margin: -480px 260px 25px 20px;
+	width: 20%;
+	height: 90%;
+
+}
+.estilo{
+	width: 28.5%; 
+	height: 320px; 
+	float: left; 
+	color: #666;
+	background-color: white; 
+ 	margin: 160px -60px 5px 200px;
+	border: 1px solid #e8e8e8;
+}
+.fuenteProducto{
+	text-align: center;
+	font-size: 15px; 
+	font-style: bold;
+	margin-top:25px;
+	font-family: Open Sans;
+	color: #666;
+}
+.divcentrar{
+	text-align: center;
+	margin-left: 6%;
+}
+
+#imagenProducto {
+	height:80%;
+	width:80%;
+
+}
+
+p.caracteristicasProductoPrincipal{
+	color:#666;
+	text-align: center;
+	font-family: 'Open Sans';
+	font-size: 14px;
+	padding-bottom:3px;
+}
