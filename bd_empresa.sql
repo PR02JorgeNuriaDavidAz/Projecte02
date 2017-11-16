@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 16-11-2017 a las 17:45:43
+-- Tiempo de generación: 16-11-2017 a las 18:18:55
 -- Versión del servidor: 10.1.26-MariaDB
 -- Versión de PHP: 7.1.9
 
@@ -31,7 +31,7 @@ SET time_zone = "+00:00";
 CREATE TABLE `tbl_incidencia` (
   `idIncidencia` int(4) NOT NULL,
   `descripcionIncidencia` varchar(100) DEFAULT NULL,
-  `fechaIncidencia` date DEFAULT NULL,
+  `fechaIncidencia` datetime DEFAULT NULL,
   `idRecurso` int(4) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -40,7 +40,7 @@ CREATE TABLE `tbl_incidencia` (
 --
 
 INSERT INTO `tbl_incidencia` (`idIncidencia`, `descripcionIncidencia`, `fechaIncidencia`, `idRecurso`) VALUES
-(1, 'fsdfsdf', '0111-01-01', NULL);
+(1, 'fsdfsdf', '0111-01-01 00:00:00', NULL);
 
 -- --------------------------------------------------------
 
@@ -60,8 +60,8 @@ CREATE TABLE `tbl_recurso` (
 --
 
 INSERT INTO `tbl_recurso` (`idRecurso`, `nombreRecursos`, `tipoRecursos`, `Ocupado`) VALUES
-(1, 'Aula teoría con proyector 01', 'Sala', 1),
-(2, 'Aula teoría con proyector 02', 'Sala', 1),
+(1, 'Aula teoría con proyector 01', 'Sala', 0),
+(2, 'Aula teoría con proyector 02', 'Sala', 0),
 (3, 'Aula teoría sin proyector', 'Sala', 1),
 (4, 'Aula informática 01', 'Sala', 1),
 (5, 'Aula informática 02', 'Sala', 1),
@@ -98,8 +98,8 @@ INSERT INTO `tbl_reserva` (`idReserva`, `fechaReserva`, `fechaLiberamiento`, `id
 (375, '2017-11-16 15:23:55', '2017-11-16 15:26:52', 1, 1),
 (376, '2017-11-16 15:23:56', '2017-11-16 15:26:52', 1, 2),
 (377, '2017-11-16 15:23:56', '2017-11-16 15:26:52', 1, 3),
-(378, '2017-11-16 16:13:51', NULL, 1, 1),
-(379, '2017-11-16 16:13:55', NULL, 1, 2),
+(378, '2017-11-16 16:13:51', '2017-11-16 18:15:11', 1, 1),
+(379, '2017-11-16 16:13:55', '2017-11-16 18:15:12', 1, 2),
 (380, '2017-11-16 16:52:09', NULL, 3, 3),
 (381, '2017-11-16 16:55:28', NULL, 3, 4),
 (382, '2017-11-16 16:55:28', NULL, 3, 5);
