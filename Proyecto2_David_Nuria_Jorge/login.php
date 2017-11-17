@@ -1,6 +1,6 @@
 <?php
 	session_start();
-	$conexion=mysqli_connect("sql206.mipropia.com", "mipc_21057600", "casamia1234", "mipc_21057600_bd_empresa");
+	$conexion = mysqli_connect("localhost", "root", "", "bd_empresa");
 	$accentos = mysqli_query($conexion, "SET NAMES 'utf8'");
 	
 	
@@ -27,11 +27,17 @@
 			$_SESSION['idUsuario'] = $reserva[idUsuario];
 
 			echo "Bienvenido $_SESSION[usuario] con id $_SESSION[idUsuario]";
-			header('location: principal.php');			
+
+			if (($reserva['nombreUsuario'] =='admin') AND ($reserva['password'] =='admin')) {
+				header('location: incidencias.php');			
+
+			}
+				header('location: principal.php');			
 		}else{
 
-			
-			header('location: index.html');	
+			// header('location: index.html');	
+			echo "El usuario o la contraseña son incorrectos";
+
 			
 		}		
 	}

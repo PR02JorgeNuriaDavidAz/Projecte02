@@ -13,7 +13,7 @@
 	
 	<div id="cabecera" class="row">
 		<div class="col-lg-4" style="text-align: left; color: white; padding-left: 2%;">
-				<p><p><a href="principal.php" id="color">INICIO</a></p></p>
+				<!-- <p><p><a href="principal.php" id="color">INICIO</a></p></p> -->
 		</div>
 		<div class="col-lg-4" style="text-align: center; color: white">
 			<p class="size">Sesión</p>
@@ -33,16 +33,17 @@
 			<form action="login.php" method="POST">
 				<div class="input-group">
 					<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-					<input id="usuario" type="text" class="form-control" name="usuario" placeholder="Nombre de usuario">
+					<input id="usuario" type="text" class="form-control" name="usuario" placeholder="Nombre de usuario" required="required">
 				</div>
 				<br>
 				<div class="input-group">
 					<span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-					<input id="password" type="password" class="form-control" name="password" placeholder="Contraseña">
+					<input id="password" type="password" class="form-control" name="password" placeholder="Contraseña" required="required">
 				</div>
 				<br>
-				<input type="submit" name="enviar" value="Enviar">
+				<input type="submit" name="enviar" value="Enviar" onsubmit="Connect()">
 			</form>
+		<div id='error'></div>
 			
 		</div>
 		<div class="col-lg-4"></div>

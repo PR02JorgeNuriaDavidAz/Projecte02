@@ -26,7 +26,8 @@
 	<?php
 	session_start();
 	
-	$conexion=mysqli_connect("sql206.mipropia.com", "mipc_21057600", "casamia1234", "mipc_21057600_bd_empresa");	
+	$conexion=mysqli_connect("localhost", "root", "", "bd_empresa");
+	error_reporting(0);
 	if(isset($_SESSION['usuario'])){
 		// echo "$_SESSION[usuario]";
 		$usuario = $_SESSION['usuario'];
@@ -51,10 +52,7 @@
 
 		}
 
-	} else {
-		$usuario = "Invitado";
-
-	}
+	 } 
 
 	if(isset($_REQUEST['devolverProducto'])){
 		$m= "UPDATE tbl_recurso SET Ocupado = 0 WHERE idRecurso = $_REQUEST[devolverProducto]";
@@ -91,17 +89,16 @@
 		<div class="col-lg-4" style="text-align: right; padding-right: 2%;"><t class="color2">Sesión</t>
 			<span style='font-size: 18px; color: white; position: right;' id="login"><a href="index.html"><i id="cerrar_sesion" style="font-size: 15px; color: white" class="glyphicon glyphicon-off"></a></i><?php echo "$usuario"; ?> </span>	
 
-
 		</div>
-			
-			<form action="principal.php" method="REQUEST">
+
+		<form action="principal.php" method="REQUEST">
 			<?php
 
 			if(isset($_REQUEST['cerrarsesion'])){
 				
 				session_destroy();
 				
-				header('location: principal.php');
+				header('location: index.html');
 			}
 			if (isset($_SESSION['usuario'])) {
 				header('principal.php');
@@ -129,7 +126,7 @@
 							<?php
 							error_reporting(0);
 							//Se inserta información referente al nombre
-							$conexion=mysqli_connect("sql206.mipropia.com", "mipc_21057600", "casamia1234", "mipc_21057600_bd_empresa");
+							$conexion=mysqli_connect("localhost","root","","bd_empresa");
 							$q="SELECT DISTINCT nombreRecursos FROM tbl_recurso";
 							$querymuestranombre=mysqli_query($conexion,$q);
 							mysqli_set_charset($conexion, "utf8");
@@ -150,7 +147,7 @@
 
 							<?php
 							//Se inserta información referente al tipo de recurso
-							$conexion1=mysqli_connect("sql206.mipropia.com", "mipc_21057600", "casamia1234", "mipc_21057600_bd_empresa");
+							$conexion1=mysqli_connect("localhost","root","","bd_empresa");
 							$qn="SELECT DISTINCT tipoRecursos FROM tbl_recurso";
 							$querymuestratipo=mysqli_query($conexion1,$qn);
 							echo "Filtro por tipo<br>";
@@ -167,7 +164,7 @@
 							</select><br><br>
 							<?php
 
-							$conexion=mysqli_connect("sql206.mipropia.com", "mipc_21057600", "casamia1234", "mipc_21057600_bd_empresa");
+							$conexion=mysqli_connect("localhost","root","","bd_empresa");
 							$q="SELECT DISTINCT nombreRecursos FROM tbl_recurso";
 							$querymuestranombre=mysqli_query($conexion,$q);
 							mysqli_set_charset($conexion, "utf8");
@@ -178,7 +175,7 @@
 							<select name='Ocupado' required>
 								<?php
 
-								$conexion=mysqli_connect("sql206.mipropia.com", "mipc_21057600", "casamia1234", "mipc_21057600_bd_empresa");
+								$conexion=mysqli_connect("localhost","root","","bd_empresa");
 								$q="SELECT DISTINCT Ocupado FROM tbl_recurso";
 								$querymuestraestados=mysqli_query($conexion,$q);
 								mysqli_set_charset($conexion, "utf8");
@@ -186,9 +183,9 @@
 
 								while ($row=mysqli_fetch_array($querymuestraestados)) {
 									echo "<tr class='filas'>";
-									if($row['Ocupado']==0){
+									if($row['Ocupado']==1){
 										echo "<option value='$row[Ocupado]'>Disponible</option>";
-									}elseif ($row['Ocupado']==1) {
+									}elseif ($row['Ocupado']==0) {
 										echo "<option value='$row[Ocupado]'>NoDisponible</option>";
 									}
 								}
@@ -219,7 +216,7 @@
 							<?php
 							error_reporting(0);
 							session_start();
-							$conexion=mysqli_connect("sql206.mipropia.com", "mipc_21057600", "casamia1234", "mipc_21057600_bd_empresa");
+							$conexion=mysqli_connect("localhost","root","","bd_empresa");
 							$usuario=$_SESSION['usuario'];
 							$qn="SELECT DISTINCT tbl_recurso.idRecurso ,nombreRecursos 
 							FROM tbl_recurso 
@@ -253,8 +250,7 @@
 
 	</div>
 	<?php
-
-	$conexion=mysqli_connect("sql206.mipropia.com", "mipc_21057600", "casamia1234", "mipc_21057600_bd_empresa");
+	$conexion=mysqli_connect("localhost", "root", "", "bd_empresa");
 	if(!$conexion){
 		echo "Error: No se pudo conectar a MySQL." . PHP_EOL;
 		echo "errno de depuración: " . mysqli_connect_errno() . PHP_EOL;
@@ -330,7 +326,7 @@
 									while ($row=mysqli_fetch_array($sql)) {
 
 
-										$conexion=mysqli_connect("sql206.mipropia.com", "mipc_21057600", "casamia1234", "mipc_21057600_bd_empresa");
+										$conexion=mysqli_connect("localhost","root","","bd_empresa");
 										$value=utf8_decode($_REQUEST['nombreRecursos']);
 										$value1=utf8_decode($_REQUEST['tipoRecursos']);
 										$value2=$_REQUEST['Ocupado'];
