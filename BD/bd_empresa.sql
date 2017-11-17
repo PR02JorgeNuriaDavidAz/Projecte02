@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 13-11-2017 a las 15:21:19
+-- Tiempo de generación: 16-11-2017 a las 18:18:55
 -- Versión del servidor: 10.1.26-MariaDB
 -- Versión de PHP: 7.1.9
 
@@ -31,9 +31,16 @@ SET time_zone = "+00:00";
 CREATE TABLE `tbl_incidencia` (
   `idIncidencia` int(4) NOT NULL,
   `descripcionIncidencia` varchar(100) DEFAULT NULL,
-  `fechaIncidencia` date DEFAULT NULL,
+  `fechaIncidencia` datetime DEFAULT NULL,
   `idRecurso` int(4) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `tbl_incidencia`
+--
+
+INSERT INTO `tbl_incidencia` (`idIncidencia`, `descripcionIncidencia`, `fechaIncidencia`, `idRecurso`) VALUES
+(1, 'fsdfsdf', '0111-01-01 00:00:00', NULL);
 
 -- --------------------------------------------------------
 
@@ -53,11 +60,11 @@ CREATE TABLE `tbl_recurso` (
 --
 
 INSERT INTO `tbl_recurso` (`idRecurso`, `nombreRecursos`, `tipoRecursos`, `Ocupado`) VALUES
-(1, 'Aula teoría con projector 01', 'Sala', 0),
-(2, 'Aula teoría con projector 02', 'Sala', 0),
-(3, 'Aula teoría sin projector', 'Sala', 0),
-(4, 'Aula informática 01', 'Sala', 0),
-(5, 'Aula informática 02', 'Sala', 0),
+(1, 'Aula teoría con proyector 01', 'Sala', 0),
+(2, 'Aula teoría con proyector 02', 'Sala', 0),
+(3, 'Aula teoría sin proyector', 'Sala', 1),
+(4, 'Aula informática 01', 'Sala', 1),
+(5, 'Aula informática 02', 'Sala', 1),
 (6, 'Despacho para entrevistas 01', 'Sala', 0),
 (7, 'Despacho para entrevistas 02', 'Sala', 0),
 (8, 'Sala de reuniones', 'Sala', 0),
@@ -77,11 +84,25 @@ INSERT INTO `tbl_recurso` (`idRecurso`, `nombreRecursos`, `tipoRecursos`, `Ocupa
 
 CREATE TABLE `tbl_reserva` (
   `idReserva` int(4) NOT NULL,
-  `fechaReserva` date DEFAULT NULL,
-  `fechaLiberamiento` date DEFAULT NULL,
+  `fechaReserva` datetime DEFAULT NULL,
+  `fechaLiberamiento` datetime DEFAULT NULL,
   `idUsuario` int(4) DEFAULT NULL,
   `idRecurso` int(4) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `tbl_reserva`
+--
+
+INSERT INTO `tbl_reserva` (`idReserva`, `fechaReserva`, `fechaLiberamiento`, `idUsuario`, `idRecurso`) VALUES
+(375, '2017-11-16 15:23:55', '2017-11-16 15:26:52', 1, 1),
+(376, '2017-11-16 15:23:56', '2017-11-16 15:26:52', 1, 2),
+(377, '2017-11-16 15:23:56', '2017-11-16 15:26:52', 1, 3),
+(378, '2017-11-16 16:13:51', '2017-11-16 18:15:11', 1, 1),
+(379, '2017-11-16 16:13:55', '2017-11-16 18:15:12', 1, 2),
+(380, '2017-11-16 16:52:09', NULL, 3, 3),
+(381, '2017-11-16 16:55:28', NULL, 3, 4),
+(382, '2017-11-16 16:55:28', NULL, 3, 5);
 
 -- --------------------------------------------------------
 
@@ -155,7 +176,7 @@ ALTER TABLE `tbl_usuario`
 -- AUTO_INCREMENT de la tabla `tbl_incidencia`
 --
 ALTER TABLE `tbl_incidencia`
-  MODIFY `idIncidencia` int(4) NOT NULL AUTO_INCREMENT;
+  MODIFY `idIncidencia` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `tbl_recurso`
@@ -167,7 +188,7 @@ ALTER TABLE `tbl_recurso`
 -- AUTO_INCREMENT de la tabla `tbl_reserva`
 --
 ALTER TABLE `tbl_reserva`
-  MODIFY `idReserva` int(4) NOT NULL AUTO_INCREMENT;
+  MODIFY `idReserva` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=383;
 
 --
 -- AUTO_INCREMENT de la tabla `tbl_usuario`

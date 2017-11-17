@@ -1,6 +1,7 @@
 <?php
-
-	include('conexio.php');
+	session_start();
+	$conexion = mysqli_connect("localhost", "root", "", "bd_empresa");
+	$accentos = mysqli_query($conexion, "SET NAMES 'utf8'");
 	
 	
 	//miramos si la conexión se ha realizado correctamente
@@ -15,16 +16,23 @@
 		$usuario=$_REQUEST['usuario'];
 		$password=$_REQUEST['password'];
 
-		$q = "SELECT * FROM tbl_usuario WHERE nombreUsuario='$usuario' AND passwordUsuario='$password'";
+		$q = "SELECT idUsuario,nombreUsuario FROM tbl_usuario WHERE nombreUsuario='$usuario' AND passwordUsuario='$password'";
+		
 		$dadesUsuaris = mysqli_query($conexion, $q);
-		echo $q;
-		// echo "$q";
+		
 		
 		if(mysqli_num_rows($dadesUsuaris)>0){
-			echo "Bienvenido $usuario";
+			$reserva = mysqli_fetch_array($dadesUsuaris);
+			$_SESSION['usuario'] = $reserva[nombreUsuario];
+			$_SESSION['idUsuario'] = $reserva[idUsuario];
+
+			echo "Bienvenido $_SESSION[usuario] con id $_SESSION[idUsuario]";
 			header('location: principal.php');			
 		}else{
-			echo "Usuario o contraseña erroneos";
+
+			
+			header('location: index.html');	
+			
 		}		
 	}
 	echo "<br><br>";

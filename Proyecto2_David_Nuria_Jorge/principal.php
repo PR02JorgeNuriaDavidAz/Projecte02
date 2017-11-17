@@ -92,8 +92,7 @@
 		<div class="col-lg-4" style="text-align: right; padding-right: 2%;"><t class="color2">Sesión</t>
 			<span style='font-size: 18px; color: white; position: right;' id="login"><a href="index.html"><i id="cerrar_sesion" style="font-size: 15px; color: white" class="glyphicon glyphicon-off"></a></i><?php echo "$usuario"; ?> </span>	
 
-		</div>
-		<form action="principal.php" method="REQUEST">
+				<form action="principal.php" method="REQUEST">
 			<?php
 
 			if(isset($_REQUEST['cerrarsesion'])){
@@ -111,6 +110,10 @@
 			}
 			?>
 		</form>
+
+
+		</div>
+	
 
 
 	</div>
@@ -185,9 +188,9 @@
 
 								while ($row=mysqli_fetch_array($querymuestraestados)) {
 									echo "<tr class='filas'>";
-									if($row['Ocupado']==1){
+									if($row['Ocupado']==0){
 										echo "<option value='$row[Ocupado]'>Disponible</option>";
-									}elseif ($row['Ocupado']==0) {
+									}elseif ($row['Ocupado']==1) {
 										echo "<option value='$row[Ocupado]'>NoDisponible</option>";
 									}
 								}

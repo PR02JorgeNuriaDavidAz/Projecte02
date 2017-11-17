@@ -19,7 +19,7 @@
 		$q = "SELECT idUsuario,nombreUsuario FROM tbl_usuario WHERE nombreUsuario='$usuario' AND passwordUsuario='$password'";
 		
 		$dadesUsuaris = mysqli_query($conexion, $q);
-		echo $q;
+		
 		
 		if(mysqli_num_rows($dadesUsuaris)>0){
 			$reserva = mysqli_fetch_array($dadesUsuaris);
@@ -29,7 +29,10 @@
 			echo "Bienvenido $_SESSION[usuario] con id $_SESSION[idUsuario]";
 			header('location: principal.php');			
 		}else{
-			echo "Usuario o contraseña erroneos";
+
+			
+			header('location: index.html');	
+			
 		}		
 	}
 	echo "<br><br>";
