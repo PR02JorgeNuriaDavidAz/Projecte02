@@ -1,6 +1,6 @@
 <?php
 	session_start();
-	$conexion = mysqli_connect("localhost", "root", "", "bd_empresa");
+	$conexion=mysqli_connect("sql206.mipropia.com", "mipc_21057600", "casamia1234", "mipc_21057600_bd_empresa");
 	$accentos = mysqli_query($conexion, "SET NAMES 'utf8'");
 	
 	
