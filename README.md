@@ -1,2 +1,3 @@
 # Projecte02
-Projecte02 DAW2 - Jorge, Nuria, David Aznar
+Validación
+Jorge Martín Fernández Quispe - 100006354.joan23@fje.edu
